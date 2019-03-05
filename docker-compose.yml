@@ -1,0 +1,27 @@
+version: '3.2'
+services:
+  db:
+    image: voidzster/postgrespro-1c-11
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes: 
+     - ./DATA/pgdata:/data
+     - ./BACKUPS:/tmp/backups
+     - ./backups_hv2:/tmp/backups_hv2
+     - /etc/localtime:/etc/localtime:ro
+    environment:
+      POSTGRES_PASSWORD: pgpass
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin@mail.com
+      - PGADMIN_DEFAULT_PASSWORD=pgadminpass
+    links: 
+      - db
+
+
