@@ -27,8 +27,8 @@ RUN apt-get update -y \
     && echo deb http://repo.postgrespro.ru/1c-archive/pg1c-11.1/ubuntu/ bionic main > /etc/apt/sources.list.d/postgrespro-1c.list \
     && apt-get update -y \
     && apt-get install -y postgrespro-1c-11-server postgrespro-1c-11-contrib 
-#   && /opt/pgpro/1c-11/bin/pg-setup initdb \
-#   && /opt/pgpro/1c-11/bin/pg-setup service enable
+#    && /opt/pgpro/1c-11/bin/pg-setup initdb \
+#    && /opt/pgpro/1c-11/bin/pg-setup service enable
 
 RUN mkdir --parent /var/run/postgresql "$PGDATA" /docker-entrypoint-initdb.d \
   && chown --recursive postgres:postgres /var/run/postgresql "$PGDATA" \
