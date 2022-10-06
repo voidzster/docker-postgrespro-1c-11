@@ -29,7 +29,7 @@ RUN apt-get update -y \
     && apt-get install -y postgrespro-1c-11-server postgrespro-1c-11-contrib \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
+ 
 RUN mkdir --parent /var/run/postgresql "$PGDATA" /docker-entrypoint-initdb.d \
   && chown --recursive postgres:postgres /var/run/postgresql "$PGDATA" \
   && chmod g+s /var/run/postgresql
